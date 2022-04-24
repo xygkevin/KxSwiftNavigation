@@ -1,0 +1,6 @@
+framework module KxSwiftNavigation {
+  umbrella header "KxSwiftNavigation-umbrella.h"
+
+  export *
+  module * { export * }
+}

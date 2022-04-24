@@ -1,0 +1,16 @@
+PODS:
+  - KxSwiftNavigation (1.0.0)
+
+DEPENDENCIES:
+  - KxSwiftNavigation (from `../`)
+
+EXTERNAL SOURCES:
+  KxSwiftNavigation:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KxSwiftNavigation: bcb1730de4006140deb955bdb2f1250b2d41f7d2
+
+PODFILE CHECKSUM: 4398542fa0374c22bc4bbf97296676e0485bbe71
+
+COCOAPODS: 1.11.3
