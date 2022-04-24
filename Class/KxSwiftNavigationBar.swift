@@ -26,11 +26,11 @@ extension KxSwiftNavigationBar {
             return nil
         }
 
-        let viewName = view.kx.className
+        let viewName = view.className
 
         if view.isKind(of: self.classForCoder) {
             for subview in self.subviews {
-                let subviewName = subview.kx.className
+                let subviewName = subview.className
                 let array = ["_UINavigationItemButtonView"]
                 if array.contains(subviewName) {
                     let convertedPoint = self.convert(point, to: subview)
@@ -45,7 +45,7 @@ extension KxSwiftNavigationBar {
             }
         }
 
-        let array = ["_UINavigationBarContentView", "_UIButtonBarStackView", self.kx.className]
+        let array = ["_UINavigationBarContentView", "_UIButtonBarStackView", self.className]
         if array.contains(viewName) {
             if self.backgroundImageView.image != nil {
                 if self.backgroundImageView.alpha <= 0.01 {

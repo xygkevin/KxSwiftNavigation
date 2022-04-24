@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class KxSwiftNavigationController: UINavigationController {
+open class KxSwiftNavigationController: UINavigationController {
     
     var pan: KxSwiftNavigationRecognizer?
     lazy var fromFakeBar: UIVisualEffectView? = kx_fakeBar()
@@ -53,11 +53,11 @@ public class KxSwiftNavigationController: UINavigationController {
         viewControllers = [rootViewController]
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         navigationBar.isTranslucent = true
         navigationBar.shadowImage = UINavigationBar.appearance().shadowImage
         if #available(iOS 13.0, *) {
@@ -262,7 +262,7 @@ extension KxSwiftNavigationController: UINavigationBarDelegate {
     }
 }
 
-class KxSwiftNavigationRecognizer: UIScreenEdgePanGestureRecognizer {
+open class KxSwiftNavigationRecognizer: UIScreenEdgePanGestureRecognizer {
     
     weak var proxyDelegate: UINavigationControllerDelegate?
     weak var nav: KxSwiftNavigationController?
@@ -299,7 +299,7 @@ class KxSwiftNavigationRecognizer: UIScreenEdgePanGestureRecognizer {
 
 
 extension KxSwiftNavigationRecognizer: UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let nav = nav, nav.children.count > 1 else {
             return false
         }
@@ -311,7 +311,7 @@ extension KxSwiftNavigationRecognizer: UIGestureRecognizerDelegate {
 
 extension KxSwiftNavigationRecognizer: UINavigationControllerDelegate {
     
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if let proxyDelegate = proxyDelegate, proxyDelegate.responds(to: #selector(navigationController(_:willShow:animated:))) {
             proxyDelegate.navigationController?(navigationController, willShow: viewController, animated: animated)
         }
@@ -337,7 +337,7 @@ extension KxSwiftNavigationRecognizer: UINavigationControllerDelegate {
         }
     }
     
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if let proxyDelegate = proxyDelegate,
             proxyDelegate.responds(to: #selector(navigationController(_:didShow:animated:))) {
             proxyDelegate .navigationController?(navigationController, didShow: viewController, animated: animated)
@@ -350,7 +350,7 @@ extension KxSwiftNavigationRecognizer: UINavigationControllerDelegate {
         nav.poppingViewController = nil
     }
     
-    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+    public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         if let proxyDelegate = proxyDelegate,
            proxyDelegate.responds(to: #selector(navigationControllerSupportedInterfaceOrientations(_:))){
             return  proxyDelegate.navigationControllerSupportedInterfaceOrientations?(navigationController) ?? .portrait
@@ -358,7 +358,7 @@ extension KxSwiftNavigationRecognizer: UINavigationControllerDelegate {
         return .portrait
     }
     
-    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         
         if let proxyDelegate = proxyDelegate,
            proxyDelegate.responds(to: #selector(navigationController(_:interactionControllerFor:))){
@@ -368,7 +368,7 @@ extension KxSwiftNavigationRecognizer: UINavigationControllerDelegate {
         return nil
     }
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let proxyDelegate = proxyDelegate,
            proxyDelegate.responds(to: #selector(navigationController(_:animationControllerFor:from:to:))){
             return proxyDelegate.navigationController?(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)

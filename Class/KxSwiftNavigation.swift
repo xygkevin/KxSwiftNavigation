@@ -291,3 +291,14 @@ public extension KxSwiftNavigation where Base: UIViewController  {
     }
 }
 
+
+public extension NSObject {
+    
+    @nonobjc var className: String {
+        return String(describing: type(of: self))
+    }
+    
+    @nonobjc static var className: String {
+        return String(describing: Self.self)
+    }
+}
