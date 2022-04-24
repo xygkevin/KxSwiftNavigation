@@ -11,7 +11,8 @@ pod 'KxSwiftNavigation'
 ```
 
 ## 使用示例如下,采用前缀navigation.xxx的方式设置相关属性
-```objc
+```swift
+
 navigation.barStyle = .black
 navigation.barTintColor = .random
 navigation.tintColor = .white
