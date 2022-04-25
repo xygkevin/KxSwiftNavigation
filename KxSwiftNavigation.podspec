@@ -13,7 +13,7 @@ KxSwiftNavigation是一个导航栏工具，是HBDNavigationBar的Swift版本，
   spec.source_files 	    = 'Class/**/*.swift'
   spec.frameworks   	    = 'UIKit', 'Foundation'
   spec.requires_arc 	    = true
-  spec.swift_version 		= '5.0'
+  spec.swift_versions       = ['5.3', '5.4', '5.5']
   spec.ios.deployment_target = '12.0'
   spec.pod_target_xcconfig  = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
