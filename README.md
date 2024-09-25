@@ -1,6 +1,12 @@
 # KxSwiftNavigation
 KxSwiftNavigation
 
+注意：该项目不再维护
+注意：该项目不再维护
+注意：该项目不再维护
+
+
+
 效果参考 [HBDNavigationBar](https://github.com/listenzz/HBDNavigationBar.git)
 
 支持Swift5.0+
